@@ -10,7 +10,7 @@ Log_file = f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.log"
 
 log_path = os.path.join(os.getcwd(), "logs")
 
-os.mkdirs(log_path, exist_ok=True)
+os.makedirs(log_path, exist_ok=True)
 
 LOG_FILEPATH = os.path.join(log_path, Log_file)
 
