@@ -4,9 +4,9 @@ import os
 import sys
 
 from dataclasses import dataclass
-from src.DiamondPricPrediction.logger import logging
-from src.DiamondPricPrediction.exception import customexception
-from src.DiamondPricPrediction.utils.utils import save_object
+from src.DiamondPricePrediction.logger import logging
+from src.DiamondPricePrediction.exception import customexception
+from src.DiamondPricePrediction.utils.utils import save_object
 
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
@@ -20,7 +20,7 @@ class DataTransformationConfig:
 
 class DataTransformation:
     def __init__(self):
-        self.get_data_transformation_config = DataTransformationConfig()
+        self.data_transformation_config = DataTransformationConfig()
 
     def get_data_transformation(self):
 
@@ -50,7 +50,7 @@ class DataTransformation:
             # Categorical pipeline
             cat_pipeline = Pipeline(
                 steps=[
-                ('imputer', SimpleImputer(strategy='most frequent')),
+                ('imputer', SimpleImputer(strategy='most_frequent')),
                 ('ordinalencoder', OrdinalEncoder(categories=[cut_categories, color_categories, clarity_categories])),
                 ('scaler', StandardScaler())
                 ]
@@ -98,10 +98,7 @@ class DataTransformation:
             train_arr = np.c_[input_feature_train_arr, np.array(target_feature_train_df)]
             test_arr = np.c_[input_feature_test_arr, np.array(target_feature_test_df)]
 
-            save_object(
-                file_path = self.get_data_transformation_config.preprocessor_obj_file_path,
-                obj = preprocessing_obj
-            )
+            save_object(self.data_transformation_config.preprocessor_obj_file_path, preprocessing_obj)
             logging.info('Preprocessing pickle file saved')
 
             return(

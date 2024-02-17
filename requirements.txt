@@ -6,5 +6,6 @@ matplotlib
 ipykernel
 datetime
 dataclasses
+pathlib
 
 -e .

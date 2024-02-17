@@ -2,11 +2,11 @@ import pandas as pd
 import numpy as np
 import os
 import sys
-from src.DiamondPricPrediction.logger import logging
-from src.DiamondPricPrediction.exception import customexception
+from src.DiamondPricePrediction.logger import logging
+from src.DiamondPricePrediction.exception import customexception
 from dataclasses import dataclass
-from src.DiamondPricPrediction.utils.utils import save_object
-from src.DiamondPricPrediction.utils.utils import evaluate_model
+from src.DiamondPricePrediction.utils.utils import save_object
+from src.DiamondPricePrediction.utils.utils import evaluate_model
 
 from sklearn.linear_model import LinearRegression, Ridge, Lasso, ElasticNet
 
@@ -18,7 +18,7 @@ class ModelTrainerConfig:
 
 class ModelTrainer:
     def __init__(self):
-        self.model_trainer_config = ModelTrainer()
+        self.model_trainer_config = ModelTrainerConfig()
 
     def initiate_data_training(self, train_array, test_array):
 
@@ -56,8 +56,8 @@ class ModelTrainer:
             logging.info(f'Best model found, Mode Name: {best_model}, R2 score: {best_model_score}' )
 
             save_object(
-                file_path = self.model_trainer_config.trained_model_file_path,
-                obj=best_model
+                self.model_trainer_config.trained_model_file_path,
+                best_model
             )
 
         except Exception as e:

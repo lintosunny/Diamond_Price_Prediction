@@ -2,8 +2,8 @@ import pandas as pd
 import numpy as np
 import os
 import sys
-from src.DiamondPricPrediction.logger import logging
-from src.DiamondPricPrediction.exception import customexception
+from src.DiamondPricePrediction.logger import logging
+from src.DiamondPricePrediction.exception import customexception
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 from pathlib import Path
@@ -49,3 +49,8 @@ class DataIngestion:
         except Exception as e:
             logging.info("exception during occured at the data ingestion stage")
             raise customexception(e, sys)
+
+
+
+
+
