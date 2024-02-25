@@ -27,7 +27,7 @@
 name: Build and deploy a container to an Azure Web App
 
 env:
-  AZURE_WEBAPP_NAME: diamondpriceprediction-dev  # set Azure Web App name
+  AZURE_WEBAPP_NAME: app-diamondpriceprediction  # set Azure Web App name
 
 on:
   push:
