@@ -4,9 +4,6 @@ scikit-learn
 seaborn
 matplotlib
 ipykernel
-datetime
-dataclasses
-pathlib
 Flask
 
 -e .
